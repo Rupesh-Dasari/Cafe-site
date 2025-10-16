@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📋 Menu</h2>
+<form action="{{ url_for('order') }}" method="post" class="menu-grid">
+  {% for item in menu %}
+  <div class="card">
+    <img src="{{ item.image }}" alt="{{ item.name }}">
+    <h3>{{ item.name }}</h3>
+    <p>₹ {{ item.price }}</p>
+    <label>
+      <input type="checkbox" name="items" value="{{ item.name }}"> Select
+    </label>
+  </div>
+  {% endfor %}
+  <button type="submit">Place Order</button>
+</form>
+{% endblock %}
